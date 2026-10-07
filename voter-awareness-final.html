@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voter Awareness Using Digital Platforms</title>
+<meta name="description" content="An educational website on how digital platforms like ECINET, social media and helplines are spreading voter awareness in India.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2721%27 fill=%27%23ff9933%27/%3E%3Crect y=%2721%27 width=%2764%27 height=%2722%27 fill=%27%23fff%27/%3E%3Crect y=%2743%27 width=%2764%27 height=%2721%27 fill=%27%23138808%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#f8f9fc;--card:#ffffff;--text:#17203a;--muted:#55607e;--ink:#12306b;--saffron:#ff9933;--green:#138808;--line:#d9deec;--btntext:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1630;--card:#18214a;--text:#eef1fb;--muted:#a9b4d6;--ink:#9db7ff;--saffron:#ffae5c;--green:#3fc25a;--line:#2d3a6b;--btntext:#0f1630}}
+:root[data-theme="dark"]{--bg:#0f1630;--card:#18214a;--text:#eef1fb;--muted:#a9b4d6;--ink:#9db7ff;--saffron:#ffae5c;--green:#3fc25a;--line:#2d3a6b;--btntext:#0f1630}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-ui,Arial,sans-serif;font-size:18px;line-height:1.65}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;line-height:1.2;margin:0 0 .5em}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+nav{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--line);z-index:5;display:flex;gap:4px;overflow-x:auto;padding:8px 12px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);padding:6px 12px;border-radius:20px;font-size:16px}
+nav a:hover{background:var(--line)}
+section{max-width:860px;margin:0 auto;padding:48px 20px}
+.hero{display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:center;padding-top:40px}
+.hero h1{font-size:clamp(32px,6vw,54px);color:var(--ink)}
+.hero p{color:var(--muted);max-width:46ch}
+.btn{display:inline-block;background:var(--ink);color:var(--btntext);border:0;border-radius:8px;padding:10px 20px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;margin:0 6px 8px 0}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.stats{display:flex;flex-direction:column;gap:14px}
+.bar{background:var(--line);border-radius:6px;height:26px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--ink);color:var(--btntext);font-size:14px;padding-left:8px;line-height:26px;white-space:nowrap}
+.steps{list-style:none;padding:0;margin:0;border-left:3px solid var(--saffron)}
+.steps li{padding:0 0 18px 20px;position:relative}
+.steps li::before{content:"";position:absolute;left:-9px;top:10px;width:15px;height:15px;border-radius:50%;background:var(--saffron)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h3{font-size:20px;color:var(--ink);margin-bottom:.3em}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 14px;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:8px;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--green);background:color-mix(in srgb,var(--green) 18%,var(--card))}
+.opt.no{border-color:#c0392b;background:color-mix(in srgb,#c0392b 15%,var(--card))}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);width:100%;max-width:340px;margin-bottom:8px}
+textarea{max-width:100%;min-height:110px}
+.pledge-msg{margin-top:12px;color:var(--green);font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin:8px 0 0}
+footer{text-align:center;color:var(--muted);padding:32px 20px;border-top:1px solid var(--line);font-size:16px}
+@media(max-width:620px){.hero{grid-template-columns:1fr}.hero svg{max-width:150px}}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:16px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--ink);color:var(--btntext)}
+.tw{overflow-x:auto}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0}
+.check input{width:20px;height:20px;margin:4px 0 0;accent-color:var(--ink)}
+.prog{height:12px;background:var(--line);border-radius:6px;overflow:hidden;margin:12px 0 6px}
+.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+body::before{content:"";display:block;height:14px;background:linear-gradient(to bottom,#ff9933 0 33.3%,#fff 33.3% 66.6%,#138808 66.6%)}
+h2{padding-bottom:.35em;border-bottom:3px solid var(--saffron);display:inline-block}
+.hero h1{border-left:6px solid var(--saffron);padding-left:14px}
+.card{border-top:3px solid var(--saffron)}
+.card:nth-child(3n){border-top-color:var(--green)}
+.card:nth-child(3n+2){border-top-color:var(--ink)}
+.chakra{display:block;margin:0 auto 10px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.chakra{animation:none}}
+footer{border-top:6px solid;border-image:linear-gradient(to right,#ff9933 33%,#e5e7f0 33% 66%,#138808 66%) 1}
+.topbar{background:var(--ink);color:var(--btntext);text-align:center;padding:8px 12px;font-size:15px;font-weight:600}
+.pat{height:20px;background-color:var(--card);background-image:linear-gradient(135deg,var(--saffron) 25%,transparent 25%),linear-gradient(225deg,var(--saffron) 25%,transparent 25%),linear-gradient(315deg,var(--green) 25%,transparent 25%),linear-gradient(45deg,var(--green) 25%,transparent 25%);background-size:20px 20px;background-position:-10px 0,-10px 0,0 0,0 0}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.big div{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--saffron);border-radius:10px;padding:12px 14px}
+.big div:nth-child(even){border-top-color:var(--green)}
+.big b{display:block;font-family:'Fraunces',Georgia,serif;font-size:26px;color:var(--ink);line-height:1.2}
+.big span{font-size:15px;color:var(--muted)}
+.epic{max-width:300px;margin:12px auto 0;display:block}
+#cert{display:none;margin-top:18px;background:#fff;color:#17203a;text-align:center;padding:24px 20px;border:10px solid;border-image:linear-gradient(to bottom,#ff9933 33%,#e5e7f0 33% 66%,#138808 66%) 1}
+#cert h3{color:#12306b;font-size:26px;margin:6px 0}
+#cert .nm{font-family:'Fraunces',Georgia,serif;font-size:30px;color:#12306b;border-bottom:2px solid #ff9933;display:inline-block;padding:0 14px;margin:10px 0}
+@media print{body *{visibility:hidden}#cert,#cert *{visibility:visible}#cert{position:absolute;left:0;top:0;width:100%}}
+.pat+footer{margin-top:36px}
+footer{padding-top:28px}
+.lang{margin-left:auto;white-space:nowrap;background:var(--ink);color:var(--btntext);border:0;border-radius:20px;padding:6px 14px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.case{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--green);border-radius:10px;padding:16px 20px;margin-top:20px}
+.case h3{color:var(--ink);font-size:21px}
+.case p{margin:0 0 .6em;color:var(--muted)}
+.ba{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.ba div{border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:16px}
+.ba b{display:block;color:var(--ink)}
+.pts{padding-left:20px}
+.pts li{margin-bottom:8px}
+nav a[aria-current="page"]{background:var(--ink);color:var(--btntext)}
+.pagehead{padding-top:36px;padding-bottom:12px}
+.pagehead h1{font-size:clamp(28px,5vw,44px);color:var(--ink);border-left:6px solid var(--saffron);padding-left:14px}
+.pagehead p{color:var(--muted);max-width:56ch;margin:0}
+
+.page[hidden]{display:none}
+.pager{max-width:860px;margin:0 auto;padding:8px 20px 36px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pager .btn{margin:0}
+.pind{color:var(--muted);font-weight:600;font-size:16px}
+.notice{background:var(--card);border-bottom:1px solid var(--line);color:var(--muted);text-align:center;padding:8px 16px;font-size:15px;line-height:1.5}
+.notice b{color:var(--ink)}
+.exp{margin:12px 0;padding:10px 14px;border-radius:8px;border:1px solid var(--line);font-size:16px}
+.exp.good{border-color:var(--green);background:color-mix(in srgb,var(--green) 14%,var(--card))}
+.exp.bad{border-color:#c0392b;background:color-mix(in srgb,#c0392b 12%,var(--card))}
+.stars{display:flex;gap:4px;margin-bottom:8px}
+.stars button{background:none;border:0;font-size:34px;line-height:1;cursor:pointer;color:var(--line);padding:2px 4px}
+.stars button.on{color:var(--saffron)}
+label[for="fbmsg"]{display:block;margin:12px 0 6px;font-weight:600}
+.card .btn{margin-top:12px}
+</style>
+</head>
+<body>
+<div class="topbar">Voter Awareness Campaign | VIVA College of Arts, Science and Commerce | Jai Hind</div>
+<div class="notice" role="note"><b>Student project.</b> This is an educational website made by students. It is not an official website of the Election Commission of India. For real voter services, use voters.eci.gov.in.</div>
+<nav aria-label="Main menu">
+<a href="#p1" aria-current="page">Home</a><a href="#p2">Learn to Vote</a><a href="#p3">Quiz &amp; Pledge</a>
+<button class="lang" id="langbtn" type="button" aria-label="Switch language">हिंदी</button>
+</nav>
+
+<div class="page" id="p1">
+<section id="home" class="hero">
+<div>
+<h1>Ink on your finger, the future in your hands</h1>
+<p>Social media, mobile apps and online portals are changing how voter awareness reaches every eligible citizen. This website tells that story.</p>
+<p><a class="btn" href="#register">See how to register</a> <a class="btn alt" href="#quiz">Take the quiz</a></p>
+</div>
+<svg viewBox="0 0 200 240" role="img" aria-label="A ballot paper going into a ballot box">
+<g transform="rotate(-6 100 70)">
+<rect x="62" y="14" width="76" height="112" rx="6" fill="#fff" stroke="var(--ink)" stroke-width="4"/>
+<line x1="74" y1="36" x2="126" y2="36" stroke="#b9bdd6" stroke-width="4" stroke-linecap="round"/>
+<line x1="74" y1="52" x2="112" y2="52" stroke="#b9bdd6" stroke-width="4" stroke-linecap="round"/>
+<rect x="74" y="68" width="22" height="22" rx="3" fill="none" stroke="var(--ink)" stroke-width="3"/>
+<path d="M78 79 l6 6 l12 -14" fill="none" stroke="#ff9933" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="104" y1="79" x2="126" y2="79" stroke="#b9bdd6" stroke-width="4" stroke-linecap="round"/>
+</g>
+<rect x="28" y="112" width="144" height="118" rx="12" fill="var(--ink)"/>
+<rect x="58" y="112" width="84" height="10" rx="5" fill="#14152a"/>
+<rect x="64" y="136" width="72" height="42" rx="6" fill="#fff"/>
+<text x="100" y="165" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="22" fill="#12306b">VOTE</text>
+<rect x="28" y="190" width="144" height="8" fill="#ff9933"/>
+<rect x="28" y="198" width="144" height="8" fill="#fff"/>
+<rect x="28" y="206" width="144" height="8" fill="#138808"/>
+</svg>
+</section>
+
+<div class="pat" aria-hidden="true"></div>
+<section id="why">
+<h2>Why every vote counts</h2>
+<p>In a democracy, citizens choose the government. Low turnout means decisions are made with fewer voices, which is why awareness is the first step.</p>
+<ul class="pts">
+<li><b>Your vote is your voice.</b> Laws, schools, roads and jobs policy are decided by the people you elect.</li>
+<li><b>Small margins are real.</b> In the 2008 Rajasthan Assembly election, a candidate in the Nathdwara seat lost by a single vote.</li>
+<li><b>Young voters are a big group.</b> Many first-time voters never register, so awareness and easy online registration matter.</li>
+<li><b>Not voting hands the decision to others.</b> Even choosing NOTA is a way of taking part.</li>
+</ul>
+<p style="color:var(--muted);font-size:15px">For verified turnout figures, see the section <a href="#india">Voting in India</a>.</p>
+</section>
+<section id="register">
+<h2>How to become a voter</h2>
+<ol class="steps">
+<li><b>Check eligibility:</b> You must be an Indian citizen aged 18 or above.</li>
+<li><b>Apply online:</b> Fill Form 6 on voters.eci.gov.in or in the ECINET app.</li>
+<li><b>Upload documents:</b> Photo, proof of age and proof of address.</li>
+<li><b>Track your status:</b> Enter your reference number in the app or portal.</li>
+<li><b>Check the voter list:</b> Confirm your name is on the electoral roll before polling day.</li>
+</ol>
+</section>
+<section id="digital">
+<h2>The role of digital platforms</h2>
+<div class="grid">
+<div class="card"><h3>ECINET app</h3><p>Launched in January 2026, it brings many Election Commission services into one app: registration, name search, application tracking and e-EPIC download.</p></div>
+<div class="card"><h3>Social media</h3><p>Short videos and posters on Instagram, YouTube and X reach young voters fast.</p></div>
+<div class="card"><h3>SVEEP campaigns</h3><p>The Election Commission's voter education programme, using both digital and on-ground outreach.</p></div>
+<div class="card"><h3>cVIGIL</h3><p>Report model code of conduct violations with a photo or video. It is now available inside ECINET.</p></div>
+<div class="card"><h3>Helpline 1950</h3><p>Phone support for voter-related questions.</p></div>
+<div class="card"><h3>WhatsApp and SMS</h3><p>Reminders and local-language information delivered directly.</p></div>
+</div>
+<div class="case"><h3>Case study: ECINET, many services in one app</h3>
+<p>A voter once had to move between separate portals and apps to search the voter list, file a form, track an application, report a violation and download the voter ID. ECINET brings these services into one official app.</p>
+<div class="ba"><div><b>Before</b>Several apps and sites, so it was easy to land on an unofficial or outdated page.</div><div><b>With ECINET</b>One official place for registration, name search, tracking, e-EPIC and cVIGIL.</div></div>
+<p style="margin-top:10px">Together with SVEEP social media campaigns and helpline 1950, this shows how digital tools make awareness faster and more interactive.</p></div>
+</section>
+<section id="compare">
+<h2>Traditional vs digital awareness</h2>
+<div class="tw"><table>
+<tr><th>Feature</th><th>Traditional methods</th><th>Digital platforms</th></tr>
+<tr><td>Examples</td><td>Posters, rallies, street plays, newspaper ads</td><td>Apps, social media, SMS, websites</td></tr>
+<tr><td>Reach</td><td>Mostly local and limited by place</td><td>Wide, across cities and villages at once</td></tr>
+<tr><td>Speed</td><td>Slow to prepare and spread</td><td>Instant sharing and updates</td></tr>
+<tr><td>Interaction</td><td>One-way message</td><td>Two-way: quizzes, comments, helplines</td></tr>
+<tr><td>Tracking results</td><td>Hard to measure</td><td>Views, shares and sign-ups can be counted</td></tr>
+<tr><td>Best for</td><td>People with little internet access</td><td>Young, mobile-first voters</td></tr>
+</table></div>
+<p style="color:var(--muted)">The best campaigns combine both.</p>
+</section>
+<div class="pager"><span></span><span class="pind">Page 1 of 3</span><button class="btn pnext" data-go="2" type="button">Next page →</button></div>
+</div>
+<div class="page" id="p2" hidden>
+<section class="pagehead"><h1>Learn how to vote</h1><p>The voting process, EVM and VVPAT, SIR 2026, a readiness checklist, challenges, inclusion and myths versus facts.</p></section>
+<div class="pat" aria-hidden="true"></div>
+<section id="india">
+<h2>Voting in India</h2>
+<p>India is called the world's largest democracy. Every citizen aged 18 or above has the right to vote, whatever their religion, caste, gender or income. This is guaranteed by Article 326 of the Constitution as universal adult suffrage.</p>
+<div class="big">
+<div><b>97.97 crore</b><span>registered electors, Lok Sabha 2024</span></div>
+<div><b>64.64 crore</b><span>votes cast, a world record</span></div>
+<div><b>65.79%</b><span>overall turnout at polling stations</span></div>
+<div><b>65.78% vs 65.55%</b><span>women vs men turnout</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>National Voters' Day</h3><p>Celebrated on 25 January, the day the Election Commission of India was founded in 1950, to encourage new voters.</p></div>
+<div class="card"><h3>Voting age 18</h3><p>The voting age was lowered from 21 to 18 by the 61st Constitutional Amendment, which brought millions of young people into elections.</p></div>
+<div class="card"><h3>Your voter ID (EPIC)</h3><p>The Elector Photo Identity Card is the main document used to prove who you are at the polling booth. You can also download a digital copy, the e-EPIC, from ECINET.</p><svg class="epic" viewBox="0 0 300 180" role="img" aria-label="Sample illustration of a voter ID card">
+<rect x="2" y="2" width="296" height="176" rx="12" fill="#fff" stroke="#12306b" stroke-width="3"/>
+<rect x="2" y="2" width="296" height="10" fill="#ff9933"/><rect x="2" y="150" width="296" height="28" fill="#138808"/>
+<text x="150" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="#12306b" font-family="Arial,sans-serif">ELECTION COMMISSION OF INDIA</text>
+<text x="150" y="48" text-anchor="middle" font-size="10" fill="#17203a" font-family="Arial,sans-serif">ELECTOR PHOTO IDENTITY CARD (SAMPLE)</text>
+<rect x="20" y="62" width="70" height="80" rx="4" fill="#e8ebf5" stroke="#12306b"/>
+<circle cx="55" cy="90" r="14" fill="#b9bdd6"/><path d="M30 138 q25 -40 50 0z" fill="#b9bdd6"/>
+<text x="106" y="76" font-size="10" fill="#17203a" font-family="Arial,sans-serif">Name: ____________</text>
+<text x="106" y="96" font-size="10" fill="#17203a" font-family="Arial,sans-serif">Father/Mother: ____</text>
+<text x="106" y="116" font-size="10" fill="#17203a" font-family="Arial,sans-serif">Age / Sex: ________</text>
+<text x="106" y="136" font-size="11" font-weight="700" fill="#12306b" font-family="Arial,sans-serif">EPIC No: ABC1234567</text>
+<text x="150" y="168" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Arial,sans-serif">Your Vote, Your Voice</text>
+</svg></div>
+</div>
+<p style="color:var(--muted);font-size:15px;margin-top:10px">Source: Election Commission of India, Lok Sabha 2024 statistics.</p>
+</section>
+<section id="evm">
+<h2>How you vote: EVM, VVPAT and NOTA</h2>
+<div class="grid">
+<div class="card"><h3>EVM</h3><p>The Electronic Voting Machine has a Ballot Unit, where you press the blue button next to your candidate, and a Control Unit with the polling officer.</p></div>
+<div class="card"><h3>Beep and red light</h3><p>A long beep and a red light next to your choice show that your vote has been recorded.</p></div>
+<div class="card"><h3>VVPAT</h3><p>The Voter Verifiable Paper Audit Trail machine shows a paper slip with your choice for about 7 seconds before it drops into a sealed box.</p></div>
+<div class="card"><h3>NOTA</h3><p>"None of the Above" is the last option on the machine. It lets you take part in the election without choosing any candidate.</p></div>
+</div>
+</section>
+<section id="journey">
+<h2>Your polling day, step by step</h2>
+<ol class="steps">
+<li><b>Find your booth:</b> Check your polling station on the ECINET app or voters.eci.gov.in.</li>
+<li><b>Carry your ID:</b> Take your voter ID (EPIC) or another accepted photo ID.</li>
+<li><b>Join the queue:</b> Polling usually runs through the day, and voters in line before closing time are allowed to vote.</li>
+<li><b>Verification:</b> An officer checks your name on the voter list and your ID.</li>
+<li><b>Indelible ink:</b> The ink mark on your left forefinger shows that you have voted.</li>
+<li><b>Cast your vote:</b> Press the button for your choice and check the VVPAT slip.</li>
+<li><b>Step out proudly:</b> You have just taken part in the world's largest election. Share the message.</li>
+</ol>
+</section>
+<section id="sir">
+<h2>Special Intensive Revision (SIR)</h2>
+<p>SIR is a detailed exercise in which the Election Commission revises the electoral roll through house-to-house visits by Booth Level Officers (BLOs) and fresh verification. Its second phase began in late 2025 in nine states and three Union Territories, and in some states a large number of names were removed from the rolls. Check whether it applies in your state on eci.gov.in.</p>
+<div class="grid">
+<div class="card"><h3>Check your name again</h3><p>Search the voter list on ECINET or voters.eci.gov.in, even if you voted before.</p></div>
+<div class="card"><h3>Keep documents ready</h3><p>Keep your photo ID and address proof handy when the BLO visits or asks for a form.</p></div>
+<div class="card"><h3>Use the right form</h3><p>Form 6 adds a new voter. Form 8 corrects details or shifts your address.</p></div>
+<div class="card"><h3>Talk to your BLO</h3><p>ECINET has a feature to book a call with your Booth Level Officer.</p></div>
+</div>
+</section>
+<section id="checklist">
+<h2>Are you ready to vote?</h2>
+<p>Tick each step you have completed.</p>
+<div class="card" id="cl">
+<label class="check"><input type="checkbox"> <span>I am 18 or older and an Indian citizen.</span></label>
+<label class="check"><input type="checkbox"> <span>I have applied for or confirmed my voter registration.</span></label>
+<label class="check"><input type="checkbox"> <span>I have found my name on the electoral roll.</span></label>
+<label class="check"><input type="checkbox"> <span>I know my polling booth, and my voter ID (EPIC), my downloaded e-EPIC or another accepted photo ID is ready.</span></label>
+<label class="check"><input type="checkbox"> <span>I have told at least three friends or family members to check their names.</span></label>
+<div class="prog"><i id="pbar"></i></div>
+<div class="pledge-msg" id="ptxt" style="margin-top:4px">0 of 5 done</div>
+</div>
+</section>
+<section id="challenges">
+<h2>Challenges and solutions</h2>
+<div class="grid">
+<div class="card"><h3>Fake news</h3><p>Problem: false messages about voting spread quickly. Solution: verify information only on official sources like eci.gov.in.</p></div>
+<div class="card"><h3>Digital divide</h3><p>Problem: not everyone has a smartphone or good internet. Solution: pair online campaigns with helpline 1950 and on-ground outreach.</p></div>
+<div class="card"><h3>Privacy</h3><p>Problem: scam links ask for personal details. Solution: use only the official app and portal, and never share OTPs.</p></div>
+<div class="card"><h3>Short attention</h3><p>Problem: long posts get ignored. Solution: use short videos, clear posters and local languages.</p></div>
+</div>
+</section>
+<section id="inclusive">
+<h2>Elections for everyone</h2>
+<div class="grid">
+<div class="card"><h3>Persons with disabilities</h3><p>Polling stations offer ramps and wheelchair help. PwD voters can request facilities through the ECI app (Saksham is now part of ECINET).</p></div>
+<div class="card"><h3>Senior citizens</h3><p>In the 2024 Lok Sabha elections, voters aged 85 and above and voters with benchmark disabilities could choose to vote from home.</p></div>
+<div class="card"><h3>Women voters</h3><p>Women turned out in slightly higher numbers than men in 2024. Some booths are run entirely by women staff.</p></div>
+<div class="card"><h3>Third gender voters</h3><p>Turnout among transgender electors rose from 14.64% in 2019 to 27.09% in 2024, and registration grew too.</p></div>
+<div class="card"><h3>First-time voters</h3><p>Turning 18 is a milestone. Register early and check your name before every election.</p></div>
+<div class="card"><h3>Overseas Indians</h3><p>Citizens living abroad can register as overseas electors. About 1.19 lakh were registered in 2024.</p></div>
+</div>
+</section>
+<section id="myths">
+<h2>Myths and facts</h2>
+<details><summary>Myth: My single vote will not change anything.</summary><p>Fact: Elections are the sum of individual votes, and some seats are decided by very small margins.</p></details>
+<details><summary>Myth: I must visit an office to register.</summary><p>Fact: You can apply online through the voter portal or the ECINET app.</p></details>
+<details><summary>Myth: Anything forwarded on WhatsApp about elections is true.</summary><p>Fact: Always cross-check dates and rules on official Election Commission channels.</p></details>
+<details><summary>Myth: Voter awareness is only for young people.</summary><p>Fact: First-time voters need guidance, but updating addresses and checking names matters for every age group.</p></details>
+</section>
+<div class="pager"><button class="btn alt pprev" data-go="1" type="button">← Previous page</button><span class="pind">Page 2 of 3</span><button class="btn pnext" data-go="3" type="button">Next page →</button></div>
+</div>
+<div class="page" id="p3" hidden>
+<section class="pagehead"><h1>Quiz, pledge and team</h1><p>Test what you know, take the voting pledge, share the message and meet the team.</p></section>
+<div class="pat" aria-hidden="true"></div>
+<section id="quiz">
+<h2>Quick quiz</h2>
+<div class="card" id="qbox"></div>
+</section>
+<section id="pledge">
+<h2>Voting pledge</h2>
+<p>Enter your name and take the pledge.</p>
+<input id="pname" placeholder="Your name" aria-label="Your name"><br>
+<button class="btn" id="pbtn">I will vote</button>
+<div class="pledge-msg" id="pmsg" role="status"></div>
+<div id="cert"><svg viewBox="0 0 60 60" width="56" height="56" fill="none" stroke="#12306b" stroke-width="1.6" aria-hidden="true"><circle cx="30" cy="30" r="26" stroke-width="3"/><circle cx="30" cy="30" r="4" fill="#12306b"/><line x1="30" y1="30" x2="52.0" y2="30.0"/><line x1="30" y1="30" x2="51.3" y2="35.7"/><line x1="30" y1="30" x2="49.1" y2="41.0"/><line x1="30" y1="30" x2="45.6" y2="45.6"/><line x1="30" y1="30" x2="41.0" y2="49.1"/><line x1="30" y1="30" x2="35.7" y2="51.3"/><line x1="30" y1="30" x2="30.0" y2="52.0"/><line x1="30" y1="30" x2="24.3" y2="51.3"/><line x1="30" y1="30" x2="19.0" y2="49.1"/><line x1="30" y1="30" x2="14.4" y2="45.6"/><line x1="30" y1="30" x2="10.9" y2="41.0"/><line x1="30" y1="30" x2="8.7" y2="35.7"/><line x1="30" y1="30" x2="8.0" y2="30.0"/><line x1="30" y1="30" x2="8.7" y2="24.3"/><line x1="30" y1="30" x2="10.9" y2="19.0"/><line x1="30" y1="30" x2="14.4" y2="14.4"/><line x1="30" y1="30" x2="19.0" y2="10.9"/><line x1="30" y1="30" x2="24.3" y2="8.7"/><line x1="30" y1="30" x2="30.0" y2="8.0"/><line x1="30" y1="30" x2="35.7" y2="8.7"/><line x1="30" y1="30" x2="41.0" y2="10.9"/><line x1="30" y1="30" x2="45.6" y2="14.4"/><line x1="30" y1="30" x2="49.1" y2="19.0"/><line x1="30" y1="30" x2="51.3" y2="24.3"/></svg>
+<h3>Certificate of Voting Pledge</h3>
+<p>This is to certify that</p>
+<div class="nm" id="cname"></div>
+<p>has pledged to vote in every election and to encourage others to do the same.</p>
+<p style="font-size:15px">Date: <span id="cdate"></span> | VIVA College of Arts, Science and Commerce</p>
+<p style="font-weight:700;color:#138808">Jai Hind!</p></div>
+<button class="btn" id="prbtn" style="display:none;margin-top:12px">Print certificate</button>
+</section>
+<section id="share">
+<h2>Spread the word</h2>
+<p>Copy the message below and share it on WhatsApp, Instagram or X.</p>
+<textarea id="smsg" readonly aria-label="Message to share">I have pledged to vote. Have you checked your name on the voter list? Check now on the ECINET app or voters.eci.gov.in. Your vote, your voice. #VoteIndia</textarea>
+<button class="btn" id="cbtn">Copy message</button> <span class="pledge-msg" id="cmsg" role="status"></span>
+</section>
+<section id="feedback">
+<h2>Feedback</h2>
+<p>Rate this website and tell us how to make it better.</p>
+<div class="card">
+<div class="stars" id="stars" role="group" aria-label="Rating out of 5">
+<button type="button" aria-label="1 star" aria-pressed="false">★</button><button type="button" aria-label="2 stars" aria-pressed="false">★</button><button type="button" aria-label="3 stars" aria-pressed="false">★</button><button type="button" aria-label="4 stars" aria-pressed="false">★</button><button type="button" aria-label="5 stars" aria-pressed="false">★</button>
+</div>
+<label for="fbmsg">Your comments</label>
+<textarea id="fbmsg" placeholder="Write your comments here..."></textarea>
+<button class="btn" id="fbbtn" type="button">Submit feedback</button>
+<div class="pledge-msg" id="fbstat" role="status"></div>
+</div>
+</section>
+
+<section id="faq">
+<h2>Frequently asked questions</h2>
+<details><summary>My name is not on the voter list. What should I do?</summary><p>Fill Form 6 on voters.eci.gov.in or in the ECINET app. You can also search the list there to see whether your name is already included.</p></details>
+<details><summary>What is SIR and what should I do?</summary><p>SIR is the Special Intensive Revision of electoral rolls. Check your name on ECINET or voters.eci.gov.in, keep your documents ready, and respond when your BLO visits.</p></details>
+<details><summary>What is ECINET?</summary><p>ECINET is the Election Commission's platform and app, launched in January 2026. It offers voter forms, name search, application tracking and e-EPIC download.</p></details>
+<details><summary>I have moved. How do I update my address?</summary><p>Use Form 8 on the portal or in the app to change your address.</p></details>
+<details><summary>Does one vote really matter?</summary><p>Yes. Many seats have been decided by small margins, and every vote adds up to the result.</p></details>
+<details><summary>Which ID can I use to vote?</summary><p>The voter ID card (EPIC) is the main one. The Election Commission also accepts some other photo IDs; the list is on eci.gov.in.</p></details>
+</section>
+<section id="conclusion">
+<h2>Conclusion</h2>
+<p>Digital platforms make voter awareness faster, cheaper and more interactive. Combined with trusted official sources and on-ground outreach, they can help more eligible citizens register, check their names and turn up to vote. Awareness is the first step, and voting is the one that counts.</p>
+</section>
+<section id="resources">
+<h2>Official services and links</h2>
+<p>This student website does not collect any voter details. For real registration and voter search, use the official Election Commission links below.</p>
+<div class="grid">
+<div class="card"><h3>New voter registration</h3><p>Apply with Form 6 and track your application.</p><a class="btn" href="https://voters.eci.gov.in" target="_blank" rel="noopener">Open voters.eci.gov.in</a></div>
+<div class="card"><h3>Search the voter list</h3><p>Check that your name and polling booth are correct.</p><a class="btn" href="https://voters.eci.gov.in" target="_blank" rel="noopener">Open voters.eci.gov.in</a></div>
+<div class="card"><h3>Download e-EPIC</h3><p>Get a digital copy of your voter ID from the official portal or the ECINET app.</p><a class="btn" href="https://voters.eci.gov.in" target="_blank" rel="noopener">Open voters.eci.gov.in</a></div>
+<div class="card"><h3>Election Commission of India</h3><p>News, rules and the list of accepted photo IDs.</p><a class="btn" href="https://eci.gov.in" target="_blank" rel="noopener">Open eci.gov.in</a></div>
+<div class="card"><h3>Helpline 1950</h3><p>Call 1950 for voter-related help.</p></div>
+</div>
+</section>
+<section id="team">
+<h2>Team and contact</h2>
+<div class="card"><p><b>Team members:</b><br>1. Prajapati Krishnakant Umakant<br>2. Neha Milind Pawar<br><b>College:</b> VIVA College of Arts, Science and Commerce<br><b>Course:</b> B.Tech IT, Third Year<br><b>Electoral Literacy Club:</b> (add if your college has one)<br><b>Guide:</b> (add your guide's name)</p></div>
+</section>
+<div class="pager"><button class="btn alt pprev" data-go="2" type="button">← Previous page</button><span class="pind">Page 3 of 3</span><span></span></div>
+</div>
+
+<div class="pat" aria-hidden="true"></div>
+<footer><svg class="chakra" viewBox="0 0 60 60" width="56" height="56" role="img" aria-label="Ashoka Chakra" fill="none" stroke="var(--ink)" stroke-width="1.6"><circle cx="30" cy="30" r="26" stroke-width="3"/><circle cx="30" cy="30" r="4" fill="var(--ink)"/><line x1="30" y1="30" x2="52.0" y2="30.0"/><line x1="30" y1="30" x2="51.3" y2="35.7"/><line x1="30" y1="30" x2="49.1" y2="41.0"/><line x1="30" y1="30" x2="45.6" y2="45.6"/><line x1="30" y1="30" x2="41.0" y2="49.1"/><line x1="30" y1="30" x2="35.7" y2="51.3"/><line x1="30" y1="30" x2="30.0" y2="52.0"/><line x1="30" y1="30" x2="24.3" y2="51.3"/><line x1="30" y1="30" x2="19.0" y2="49.1"/><line x1="30" y1="30" x2="14.4" y2="45.6"/><line x1="30" y1="30" x2="10.9" y2="41.0"/><line x1="30" y1="30" x2="8.7" y2="35.7"/><line x1="30" y1="30" x2="8.0" y2="30.0"/><line x1="30" y1="30" x2="8.7" y2="24.3"/><line x1="30" y1="30" x2="10.9" y2="19.0"/><line x1="30" y1="30" x2="14.4" y2="14.4"/><line x1="30" y1="30" x2="19.0" y2="10.9"/><line x1="30" y1="30" x2="24.3" y2="8.7"/><line x1="30" y1="30" x2="30.0" y2="8.0"/><line x1="30" y1="30" x2="35.7" y2="8.7"/><line x1="30" y1="30" x2="41.0" y2="10.9"/><line x1="30" y1="30" x2="45.6" y2="14.4"/><line x1="30" y1="30" x2="49.1" y2="19.0"/><line x1="30" y1="30" x2="51.3" y2="24.3"/></svg>Source: Election Commission of India (eci.gov.in). This is an educational project. Last updated: October 2026. Jai Hind!</footer>
+
+<script>
+
+var L='en';
+try{if(localStorage.getItem('lang')==='hi')L='hi'}catch(e){}
+var Q=[
+{q:"What is the minimum voting age in India?",qh:"भारत में वोट देने की न्यूनतम आयु क्या है?",o:["16 years","18 years","21 years"],oh:["16 वर्ष","18 वर्ष","21 वर्ष"],a:1,x:"Every citizen aged 18 or above can vote. The 61st Constitutional Amendment lowered the voting age from 21 to 18.",xh:"18 वर्ष या उससे अधिक उम्र का हर नागरिक वोट दे सकता है। 61वें संविधान संशोधन ने मतदान की आयु 21 से घटाकर 18 की थी।"},
+{q:"Which form is used to register as a new voter online?",qh:"नए मतदाता के रूप में ऑनलाइन पंजीकरण के लिए कौन सा फ़ॉर्म भरा जाता है?",o:["Form 6","Form 16","Form 49"],oh:["फ़ॉर्म 6","फ़ॉर्म 16","फ़ॉर्म 49"],a:0,x:"Form 6 adds a new voter to the electoral roll. Form 8 is used to correct details or shift your address.",xh:"फ़ॉर्म 6 से नया मतदाता सूची में जुड़ता है। जानकारी सुधारने या पता बदलने के लिए फ़ॉर्म 8 होता है।"},
+{q:"What is the Election Commission's voter helpline number?",qh:"चुनाव आयोग की मतदाता हेल्पलाइन का नंबर क्या है?",o:["100","1950","112"],oh:["100","1950","112"],a:1,x:"1950 is the voter helpline. 100 is the police number and 112 is the general emergency number.",xh:"1950 मतदाता हेल्पलाइन है। 100 पुलिस का और 112 आपातकालीन नंबर है।"},
+{q:"When is National Voters' Day observed?",qh:"राष्ट्रीय मतदाता दिवस कब मनाया जाता है?",o:["25 January","26 January","15 August"],oh:["25 जनवरी","26 जनवरी","15 अगस्त"],a:0,x:"25 January marks the day the Election Commission of India was founded in 1950.",xh:"25 जनवरी को 1950 में भारत निर्वाचन आयोग की स्थापना हुई थी, इसी दिन यह दिवस मनाया जाता है।"},
+{q:"Which app launched in January 2026 brings many Election Commission services together?",qh:"जनवरी 2026 में लॉन्च हुआ कौन सा ऐप चुनाव आयोग की कई सेवाएँ एक जगह लाता है?",o:["ECINET","DigiLocker","UMANG"],oh:["ECINET","DigiLocker","UMANG"],a:0,x:"ECINET puts registration, name search, application tracking and e-EPIC download in one official app.",xh:"ECINET एक ही आधिकारिक ऐप में पंजीकरण, नाम खोज, आवेदन ट्रैकिंग और e-EPIC डाउनलोड देता है।"},
+{q:"What does SIR stand for in electoral roll revision?",qh:"मतदाता सूची पुनरीक्षण में SIR का क्या मतलब है?",o:["Special Intensive Revision","State Internet Registration","Simple ID Review"],oh:["Special Intensive Revision (विशेष गहन पुनरीक्षण)","State Internet Registration","Simple ID Review"],a:0,x:"SIR is the Special Intensive Revision, in which Booth Level Officers verify the electoral roll house to house.",xh:"SIR यानी विशेष गहन पुनरीक्षण, जिसमें बूथ लेवल अधिकारी घर-घर जाकर मतदाता सूची की जाँच करते हैं।"},
+{q:"Which Article of the Constitution guarantees universal adult suffrage?",qh:"संविधान का कौन सा अनुच्छेद सार्वभौमिक वयस्क मताधिकार देता है?",o:["Article 326","Article 21","Article 370"],oh:["अनुच्छेद 326","अनुच्छेद 21","अनुच्छेद 370"],a:0,x:"Article 326 provides that elections are held on the basis of adult suffrage.",xh:"अनुच्छेद 326 के अनुसार चुनाव वयस्क मताधिकार के आधार पर होते हैं।"},
+{q:"For about how long does the VVPAT slip stay visible?",qh:"VVPAT की पर्ची लगभग कितनी देर दिखाई देती है?",o:["3 seconds","7 seconds","15 seconds"],oh:["3 सेकंड","7 सेकंड","15 सेकंड"],a:1,x:"The slip shows your choice for about 7 seconds before it drops into a sealed box.",xh:"पर्ची लगभग 7 सेकंड तक आपकी पसंद दिखाती है, फिर सील बंद डिब्बे में गिर जाती है।"},
+{q:"On which finger is the indelible ink applied?",qh:"अमिट स्याही किस उँगली पर लगाई जाती है?",o:["Right thumb","Left forefinger","Left thumb"],oh:["दाएँ हाथ का अँगूठा","बाएँ हाथ की तर्जनी","बाएँ हाथ का अँगूठा"],a:1,x:"The ink on the left forefinger shows that you have voted and helps stop double voting.",xh:"बाएँ हाथ की तर्जनी पर लगी स्याही बताती है कि आप वोट दे चुके हैं और दोबारा वोट डालने से रोकती है।"},
+{q:"What does NOTA stand for?",qh:"NOTA का क्या मतलब है?",o:["None of the Above","No Option To Abstain","National Online Tally Account"],oh:["None of the Above (उपरोक्त में से कोई नहीं)","No Option To Abstain","National Online Tally Account"],a:0,x:"NOTA is the last option on the machine. It lets you take part without choosing any candidate.",xh:"NOTA मशीन का आख़िरी विकल्प है। इससे आप किसी उम्मीदवार को चुने बिना भी मतदान में हिस्सा ले सकते हैं।"}
+];
+var i=0,score=0,box=document.getElementById('qbox');
+function shuffle(a){for(var j=a.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1)),t=a[j];a[j]=a[k];a[k]=t}return a}
+function show(){
+ if(!box)return;
+ var hi=L==='hi';
+ if(i>=Q.length){box.innerHTML='<h3>'+(hi?'आपका स्कोर: ':'Your score: ')+score+' / '+Q.length+'</h3><button class="btn" onclick="i=0;score=0;show()">'+(hi?'फिर से खेलें':'Play again')+'</button>';return}
+ var q=Q[i],h='<h3>'+(hi?'प्रश्न ':'Question ')+(i+1)+' / '+Q.length+': '+(hi?q.qh:q.q)+'</h3>';
+ shuffle([0,1,2]).forEach(function(k){h+='<button class="opt" data-k="'+k+'">'+(hi?q.oh[k]:q.o[k])+'</button>'});
+ box.innerHTML=h;
+ box.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){
+  var k=+b.dataset.k,ok=(k===q.a);
+  box.querySelectorAll('.opt').forEach(function(x){x.disabled=true});
+  b.classList.add(ok?'ok':'no');
+  box.querySelector('.opt[data-k="'+q.a+'"]').classList.add('ok');
+  if(ok)score++;
+  var ex=document.createElement('div');ex.className='exp '+(ok?'good':'bad');ex.setAttribute('role','status');
+  ex.innerHTML='<b>'+(ok?(hi?'सही! ':'Correct! '):(hi?'गलत। ':'Incorrect. '))+'</b>'+(hi?q.xh:q.x);
+  box.appendChild(ex);
+  var nb=document.createElement('button');nb.className='btn';nb.type='button';
+  nb.textContent=(i===Q.length-1)?(hi?'स्कोर देखें':'See score'):(hi?'अगला सवाल →':'Next question →');
+  nb.onclick=function(){i++;show()};
+  box.appendChild(nb);nb.focus();
+ }});
+}
+show();
+if(document.getElementById('pbtn')){
+var pm=document.getElementById('pmsg');
+try{var s=localStorage.getItem('pledge');if(s)pm.textContent=(L==='hi'?'धन्यवाद, '+s+'। आपकी प्रतिज्ञा दर्ज हो चुकी है।':'Thank you, '+s+'. Your pledge is recorded.')}catch(e){}
+document.getElementById('pbtn').onclick=function(){
+ var n=document.getElementById('pname').value.trim();
+ if(!n){pm.style.color='#c0392b';pm.textContent=(L==='hi'?'कृपया पहले अपना नाम लिखें।':'Please enter your name first.');return}
+ pm.style.color='';pm.textContent=(L==='hi'?'धन्यवाद, '+n+'! आपने वोट देने की प्रतिज्ञा ली है।':'Thank you, '+n+'! You have pledged to vote.');document.getElementById('cname').textContent=n;document.getElementById('cdate').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});document.getElementById('cert').style.display='block';document.getElementById('prbtn').style.display='inline-block';
+ try{localStorage.setItem('pledge',n)}catch(e){}
+};
+document.getElementById('prbtn').onclick=function(){window.print()};
+document.getElementById('cbtn').onclick=function(){var t=document.getElementById('smsg'),m=document.getElementById('cmsg');t.select();try{navigator.clipboard.writeText(t.value).then(function(){m.textContent='Copied'},function(){m.textContent='Select and copy manually'})}catch(e){m.textContent='Select and copy manually'}};
+}
+if(document.getElementById('cl')){(function(){var b=document.querySelectorAll('#cl input'),bar=document.getElementById('pbar'),t=document.getElementById('ptxt');
+function u(){var n=0;b.forEach(function(x){if(x.checked)n++});bar.style.width=(n/b.length*100)+'%';t.textContent=n===b.length?'All done. You are ready to vote!':n+' of '+b.length+' done'}
+b.forEach(function(x){x.onchange=u})})();}
+if(document.getElementById('fbbtn')){
+var rate=0,stars=[].slice.call(document.querySelectorAll('#stars button')),fm=document.getElementById('fbstat');
+function paint(){stars.forEach(function(s,k){var on=k<rate;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on?'true':'false')})}
+stars.forEach(function(s,k){s.onclick=function(){rate=k+1;paint()}});
+document.getElementById('fbbtn').onclick=function(){
+ var hi=L==='hi',t=document.getElementById('fbmsg');
+ if(!rate){fm.style.color='#c0392b';fm.textContent=hi?'कृपया पहले स्टार रेटिंग चुनिए।':'Please choose a star rating first.';return}
+ try{var arr=JSON.parse(localStorage.getItem('feedback')||'[]');arr.push({r:rate,m:t.value.trim(),d:new Date().toISOString().slice(0,10)});localStorage.setItem('feedback',JSON.stringify(arr))}catch(e){}
+ fm.style.color='';fm.textContent=hi?'धन्यवाद! आपकी प्रतिक्रिया इस डिवाइस पर सेव हो गई है।':'Thank you! Your feedback is saved on this device.';
+ t.value='';rate=0;paint();
+};
+}
+(function(){
+var HI={
+'nav a':['होम','वोट देना सीखें','क्विज़ और प्रतिज्ञा'],
+'.pagehead h1':['वोट देना सीखें','क्विज़, प्रतिज्ञा और टीम'],
+'.pagehead p':['मतदान प्रक्रिया, EVM, SIR, चेकलिस्ट और मिथक-तथ्य।','अपनी जानकारी परखिए, प्रतिज्ञा लीजिए और संदेश साझा कीजिए।'],
+'#digital h2':'डिजिटल माध्यमों की भूमिका',
+'.topbar':'मतदाता जागरूकता अभियान | VIVA College of Arts, Science and Commerce | जय हिन्द',
+'#home h1':'उँगली पर स्याही, हाथ में भविष्य',
+'#home div > p:nth-of-type(1)':'सोशल मीडिया, मोबाइल ऐप और ऑनलाइन पोर्टल हर पात्र नागरिक तक मतदाता जागरूकता पहुँचाने का तरीका बदल रहे हैं। यह वेबसाइट यही कहानी बताती है।',
+'#home .btn':['पंजीकरण कैसे करें','क्विज़ खेलें'],
+'.pnext':'अगला पेज →',
+'.notice':'<b>छात्र प्रोजेक्ट।</b> यह छात्रों द्वारा बनाई गई शैक्षणिक वेबसाइट है। यह भारत निर्वाचन आयोग की आधिकारिक वेबसाइट नहीं है। असली मतदाता सेवाओं के लिए voters.eci.gov.in का उपयोग करें।',
+'#feedback h2':'आपकी प्रतिक्रिया',
+'#feedback > p':'इस वेबसाइट को रेटिंग दीजिए और बताइए कि इसे कैसे बेहतर बनाया जाए।',
+'#feedback label':'आपके सुझाव',
+'#fbbtn':'प्रतिक्रिया भेजें',
+'#resources h2':'आधिकारिक सेवाएँ और लिंक',
+'#resources > p':'यह छात्र वेबसाइट मतदाता की कोई जानकारी नहीं लेती। असली पंजीकरण और मतदाता सूची खोज के लिए नीचे दिए आधिकारिक लिंक का उपयोग करें।',
+'#resources .card h3':['नए मतदाता का पंजीकरण','मतदाता सूची में नाम खोजें','e-EPIC डाउनलोड करें','भारत निर्वाचन आयोग','हेल्पलाइन 1950'],
+'#resources .card p':['फ़ॉर्म 6 भरकर आवेदन कीजिए और स्थिति ट्रैक कीजिए।','जाँचिए कि आपका नाम और मतदान केंद्र सही हैं या नहीं।','आधिकारिक पोर्टल या ECINET ऐप से अपने वोटर आईडी की डिजिटल कॉपी लीजिए।','समाचार, नियम और मान्य फ़ोटो पहचान पत्रों की सूची।','मतदाता संबंधी मदद के लिए 1950 पर कॉल कीजिए।'],
+'.pprev':'← पिछला पेज',
+'.pind':['पेज 1 / 3','पेज 2 / 3','पेज 3 / 3'],
+'#compare h2':'पारंपरिक बनाम डिजिटल जागरूकता',
+'#india h2':'भारत में मतदान',
+'#evm h2':'वोट कैसे डालें: EVM, VVPAT और NOTA',
+'#journey h2':'मतदान के दिन, कदम दर कदम',
+'#checklist h2':'क्या आप वोट देने के लिए तैयार हैं?',
+'#myths h2':'मिथक और तथ्य',
+'#share h2':'संदेश फैलाइए',
+'#faq h2':'अक्सर पूछे जाने वाले प्रश्न',
+'#why h2':'हर वोट क्यों मायने रखता है',
+'#why > p:first-of-type':'लोकतंत्र में नागरिक सरकार चुनते हैं। कम मतदान का मतलब है कि फ़ैसले कम आवाज़ों से होते हैं, इसीलिए जागरूकता पहला कदम है।',
+'#why .pts li':['<b>आपका वोट आपकी आवाज़ है।</b> क़ानून, स्कूल, सड़कें और रोज़गार की नीतियाँ आपके चुने हुए लोग तय करते हैं।','<b>कम अंतर वास्तविक होता है।</b> 2008 के राजस्थान विधानसभा चुनाव में नाथद्वारा सीट पर एक उम्मीदवार सिर्फ़ एक वोट से हार गया था।','<b>युवा मतदाता बड़ा समूह हैं।</b> कई पहली बार के मतदाता पंजीकरण ही नहीं कराते, इसलिए जागरूकता और आसान ऑनलाइन पंजीकरण ज़रूरी है।','<b>वोट न देने से फ़ैसला दूसरों के हाथ में चला जाता है।</b> NOTA चुनना भी भागीदारी का एक तरीका है।'],
+'#register h2':'मतदाता कैसे बनें',
+'#register .steps li':['<b>पात्रता जाँचें:</b> आप भारतीय नागरिक हों और आपकी उम्र 18 वर्ष या अधिक हो।','<b>ऑनलाइन आवेदन करें:</b> voters.eci.gov.in या ECINET ऐप पर फ़ॉर्म 6 भरें।','<b>दस्तावेज़ अपलोड करें:</b> फ़ोटो, आयु प्रमाण और पते का प्रमाण।','<b>स्थिति ट्रैक करें:</b> ऐप या पोर्टल में अपना रेफ़रेंस नंबर डालें।','<b>मतदाता सूची देखें:</b> मतदान से पहले पक्का करें कि आपका नाम सूची में है।'],
+'#quiz h2':'छोटा क्विज़',
+'#pledge h2':'मतदान प्रतिज्ञा',
+'#pledge > p':'अपना नाम लिखिए और प्रतिज्ञा लीजिए।',
+'#pbtn':'मैं वोट दूँगा/दूँगी',
+'#team h2':'टीम और संपर्क'
+};
+var PH={'#pname':['आपका नाम','Your name']};
+function setLang(l){
+ L=l;
+ Object.keys(HI).forEach(function(sel){
+  document.querySelectorAll(sel).forEach(function(e,n){
+   if(e.dataset.en===undefined)e.dataset.en=e.innerHTML;
+   var v=HI[sel];if(Array.isArray(v))v=v[n];
+   e.innerHTML=(l==='hi'&&v!==undefined)?v:e.dataset.en;
+  });
+ });
+ var pn=document.getElementById('pname');if(pn)pn.placeholder=l==='hi'?PH['#pname'][0]:PH['#pname'][1];
+ var fb=document.getElementById('fbmsg');if(fb)fb.placeholder=l==='hi'?'अपने सुझाव यहाँ लिखिए...':'Write your comments here...';
+ document.documentElement.lang=l==='hi'?'hi':'en';
+ document.getElementById('langbtn').textContent=l==='hi'?'English':'हिंदी';
+ i=0;score=0;show();
+ try{localStorage.setItem('lang',l)}catch(e){}
+}
+document.getElementById('langbtn').onclick=function(){setLang(L==='hi'?'en':'hi')};
+if(L==='hi')setLang('hi');
+})();
+
+
+(function(){
+var pages=[].slice.call(document.querySelectorAll('.page')),links=[].slice.call(document.querySelectorAll('nav a'));
+function go(n,target){
+ n=Math.max(1,Math.min(pages.length,n));
+ pages.forEach(function(p,k){p.hidden=(k!==n-1)});
+ links.forEach(function(a,k){if(k===n-1)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ if(target)target.scrollIntoView();else window.scrollTo(0,0);
+ try{history.replaceState(null,'','#p'+n)}catch(e){}
+}
+document.addEventListener('click',function(e){
+ var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+ var id=a.getAttribute('href').slice(1),m=/^p(\d)$/.exec(id);
+ if(m){e.preventDefault();go(+m[1]);return}
+ var t=document.getElementById(id);if(!t)return;
+ var pg=t.closest('.page');if(!pg)return;
+ e.preventDefault();go(pages.indexOf(pg)+1,t);
+});
+[].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){go(+b.dataset.go)}});
+var m=/^#p(\d)$/.exec(location.hash);go(m?+m[1]:1);
+})();
+</script>
+</body>
+</html>
